@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+map.html
+results.json
