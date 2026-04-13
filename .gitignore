@@ -2,3 +2,13 @@ __pycache__/
 *.pyc
 map.html
 results.json
+
+# Video files (large, downloaded temporarily)
+frames/*.mp4
+frames/*.webm
+frames/*.mkv
+frames/v_*.mp4
+frames/v_*.webm
+
+# Generated outputs
+dashboard.html
