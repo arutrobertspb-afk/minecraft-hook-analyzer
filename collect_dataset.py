@@ -243,6 +243,12 @@ def main():
             existing_ids = {m.get("id") for m in existing_metas if m.get("id")}
             if frame_embeds_path.exists():
                 existing_frame_embeds = list(np.load(frame_embeds_path))
+            else:
+                # Pad single-embed old videos to 5-frame format by tiling
+                for emb in existing_embeds:
+                    tiled = np.tile(emb[np.newaxis], (len(FRAME_TIMES), 1))  # (5, 512)
+                    existing_frame_embeds.append(tiled)
+                print(f"  padded {len(existing_embeds)} old videos to 5-frame format", flush=True)
             print(f"Appending to existing {len(existing_metas)} videos", flush=True)
 
     print(f"Collecting from {len(args.sources)} sources, {args.per_source} each", flush=True)
